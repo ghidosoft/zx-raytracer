@@ -14,10 +14,10 @@ struct sphere {
 
 #define SQUARED(x) ((x) * (x))
 struct sphere spheres[] = {
-    {0, -1, 4, SQUARED(1.f), PAPER_RED},
-    {2, 0, 4, SQUARED(1.f), PAPER_BLUE},
-    {-2, 0, 4, SQUARED(1.f), PAPER_GREEN},
-    {0, -5001, 0, SQUARED(5000.f), PAPER_YELLOW}
+    {0, -1, 4, SQUARED(1.f), PAPER_RED | BRIGHT},
+    {2, 0, 4, SQUARED(1.f), PAPER_BLUE | BRIGHT},
+    {-2, 0, 4, SQUARED(1.f), PAPER_GREEN | BRIGHT},
+    {0, -5001, 0, SQUARED(5000.f), PAPER_YELLOW | BRIGHT}
 };
 
 const uint8_t nSpheres = sizeof(spheres) / sizeof(spheres[0]);
