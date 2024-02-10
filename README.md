@@ -2,9 +2,13 @@
 
 This is a port of the [ZX Raytracer by Gabriel Gambetta](https://gabrielgambetta.com/zx-raytracer.html) for the [z88dk](https://z88dk.org/) C compiler.
 
-Output (on the [epoch emulator](https://github.com/ghidosoft/epoch)):
+Output of the low-res ray tracing (on the [epoch emulator](https://github.com/ghidosoft/epoch)):
 
 ![raytracer1](images/raytracer1.png)
+
+Output of the hi-res ray tracing:
+
+![raytracer3](images/raytracer3.png)
 
 ## Getting started
 
