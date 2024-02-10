@@ -144,7 +144,7 @@ int main(void) {
 
     const uint32_t end = ((uint32_t)(memory[23674]) << 16) | ((uint32_t)(memory[23673]) << 8) | memory[23672];
     const uint32_t elapsed = end / 50;
-    printf("Elapsed %d", elapsed);
+    printf("%d\"", elapsed);
 
     return 0;
 }
