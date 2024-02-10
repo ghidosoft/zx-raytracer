@@ -11,13 +11,13 @@ struct sphere spheres[] = {
     {-2, 0, 4, SQUARED(1.f), PAPER_GREEN | BRIGHT},
     {0, -5001, 0, SQUARED(5000.f), PAPER_YELLOW | BRIGHT}
 };
-const uint8_t nSpheres = sizeof(spheres) / sizeof(spheres[0]);
+const uint8_t spheres_n = sizeof(spheres) / sizeof(spheres[0]);
 
-uint8_t traceRay(float rdx, float rdy, float rdz) {
+uint8_t trace_ray(float rdx, float rdy, float rdz) {
     uint8_t color = PAPER_BLACK;
     float min_t = tmin;
 
-    for (uint8_t i = 0; i < nSpheres; i++) {
+    for (uint8_t i = 0; i < spheres_n; i++) {
         const float cox = rox - spheres[i].x;
         const float coy = roy - spheres[i].y;
         const float coz = roz - spheres[i].z;
@@ -58,7 +58,7 @@ int main(void) {
             float rdy = (11.f - (float) y) / 32.f;
             float rdz = 1.f;
 
-            uint8_t color = traceRay(rdx, rdy, rdz);
+            uint8_t color = trace_ray(rdx, rdy, rdz);
 
             unsigned char* aaddr = zx_saddr2aaddr(zx_pxy2saddr(x * 8, y * 8));
             (*aaddr) = color;
