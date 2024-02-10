@@ -1,7 +1,9 @@
 // Ported from https://gabrielgambetta.com/zx-raytracer-3-src.html
 
 #include <arch/zx.h>
+#include <intrinsic.h>
 #include <math.h>
+#include <stdio.h>
 #include <string.h>
 #include "raytracer.h"
 
@@ -49,7 +51,15 @@ uint8_t trace_ray(float dx, float dy) {
 uint8_t color_pixels[64];
 uint8_t color_usage[8];
 
+unsigned char* memory = 0;
+
 int main(void) {
+    // Reset frame counter
+    memory[23672] = memory[23673] = memory[23674] = 0;
+
+    // Re-enable interrupt (for the ROM frame counter)
+    intrinsic_ei();
+
     zx_cls(PAPER_WHITE | INK_BLACK);
 
     for (int16_t x = 0; x < 256; x += 8) {
@@ -129,6 +139,12 @@ int main(void) {
             }
         }
     }
+
+    intrinsic_di();
+
+    const uint32_t end = ((uint32_t)(memory[23674]) << 16) | ((uint32_t)(memory[23673]) << 8) | memory[23672];
+    const uint32_t elapsed = end / 50;
+    printf("Elapsed %d", elapsed);
 
     return 0;
 }

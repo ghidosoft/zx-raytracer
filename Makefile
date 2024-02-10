@@ -1,5 +1,5 @@
 CC=z88dk.zcc
-CFLAGS = +zx -vn -O3 -clib=sdcc_iy -startup=31 -create-app
+CFLAGS = +zx -vn -O3 -clib=sdcc_iy -startup=30 -create-app
 LIBS=-lm
 
 OUT_DIR=out
