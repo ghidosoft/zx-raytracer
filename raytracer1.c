@@ -17,7 +17,7 @@ struct sphere spheres[] = {
 };
 const uint8_t spheres_n = sizeof(spheres) / sizeof(spheres[0]);
 
-uint8_t trace_ray(float rdx, float rdy, float rdz) {
+uint8_t trace_ray(float rdx, float rdy) {
     uint8_t color = PAPER_BLACK;
     float min_t = tmin;
 
@@ -26,8 +26,8 @@ uint8_t trace_ray(float rdx, float rdy, float rdz) {
         const float coy = roy - spheres[i].y;
         const float coz = roz - spheres[i].z;
 
-        const float eqa = rdx * rdx + rdy * rdy + rdz * rdz;
-        const float eqb = 2 * (rdx * cox + rdy * coy + rdz * coz);
+        const float eqa = rdx * rdx + rdy * rdy + 1.f;
+        const float eqb = 2 * (rdx * cox + rdy * coy + coz);
         const float eqc = (cox * cox + coy * coy + coz * coz) - spheres[i].radius_squared;
 
         const float disc = eqb * eqb - 4 * eqa * eqc;
@@ -68,9 +68,8 @@ int main(void) {
         for (uint8_t y = 0; y < 22; y++) {
             float rdx = ((float) x - 16.f) / 32.f;
             float rdy = (11.f - (float) y) / 32.f;
-            float rdz = 1.f;
 
-            uint8_t color = trace_ray(rdx, rdy, rdz);
+            uint8_t color = trace_ray(rdx, rdy);
 
             *zx_pxy2aaddr(x * 8, y * 8) = color;
         }

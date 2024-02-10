@@ -2,7 +2,7 @@
 
 This is a port of the [ZX Raytracer by Gabriel Gambetta](https://gabrielgambetta.com/zx-raytracer.html) for the [z88dk](https://z88dk.org/) C compiler.
 
-Output of the low-res ray tracing (on the [epoch emulator](https://github.com/ghidosoft/epoch)) - less than 2 minutes (82s):
+Output of the low-res ray tracing (on the [epoch emulator](https://github.com/ghidosoft/epoch)) - less than 2 minutes (77s):
 
 ![raytracer1](images/raytracer1.png)
 
