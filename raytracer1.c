@@ -62,8 +62,7 @@ int main(void) {
 
             uint8_t color = trace_ray(rdx, rdy, rdz);
 
-            unsigned char* aaddr = zx_saddr2aaddr(zx_pxy2saddr(x * 8, y * 8));
-            (*aaddr) = color;
+            *zx_pxy2aaddr(x * 8, y * 8) = color;
         }
     }
 

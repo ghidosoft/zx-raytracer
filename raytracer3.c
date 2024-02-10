@@ -61,8 +61,7 @@ int main(void) {
 
             if (ctl == cbr && ctl == ctr && ctl == cbl) {
                 // All corners same color -> set block background
-                unsigned char* aaddr = zx_saddr2aaddr(zx_pxy2saddr(x, y));
-                (*aaddr) = (ctl << 3) | BRIGHT;
+                *zx_pxy2aaddr(x, y) = (ctl << 3) | BRIGHT;
                 continue;
             }
 
@@ -116,7 +115,7 @@ int main(void) {
             }
 
             // Paper is the most frequent color, ink the second
-            *zx_saddr2aaddr(zx_pxy2saddr(x, y)) = (color_paper << 3) | color_ink | BRIGHT;
+            *zx_pxy2aaddr(x, y) = (color_paper << 3) | color_ink | BRIGHT;
 
             // Plot all secondary colors
             ci = 0;
