@@ -1,25 +1,16 @@
-// Ported from: https://gabrielgambetta.com/zx-raytracer.html
-
 #include <arch/zx.h>
 #include <math.h>
+#include "raytracer.h"
 
 const float rox = 0, roy = 0, roz = 0;
 const float tmin = 0, tmax = 10000;
 
-struct sphere {
-    float x, y, z;
-    float radius_squared;
-    uint8_t color;
-};
-
-#define SQUARED(x) ((x) * (x))
 struct sphere spheres[] = {
     {0, -1, 4, SQUARED(1.f), PAPER_RED | BRIGHT},
     {2, 0, 4, SQUARED(1.f), PAPER_BLUE | BRIGHT},
     {-2, 0, 4, SQUARED(1.f), PAPER_GREEN | BRIGHT},
     {0, -5001, 0, SQUARED(5000.f), PAPER_YELLOW | BRIGHT}
 };
-
 const uint8_t nSpheres = sizeof(spheres) / sizeof(spheres[0]);
 
 uint8_t traceRay(float rdx, float rdy, float rdz) {
@@ -58,7 +49,7 @@ uint8_t traceRay(float rdx, float rdy, float rdz) {
     return color;
 }
 
-int main() {
+int main(void) {
     zx_cls(PAPER_WHITE | INK_BLACK);
 
     for (uint8_t x = 0; x < 32; x++) {
