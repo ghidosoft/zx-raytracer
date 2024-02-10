@@ -1,3 +1,5 @@
+// Ported from https://gabrielgambetta.com/zx-raytracer-3-src.html
+
 #include <arch/zx.h>
 #include <math.h>
 #include <string.h>
