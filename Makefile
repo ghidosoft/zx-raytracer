@@ -4,9 +4,13 @@ LIBS=-lm
 
 OUT_DIR=out
 
-all: $(OUT_DIR)/raytracer1
+all: $(OUT_DIR)/raytracer1 $(OUT_DIR)/raytracer3
 
 $(OUT_DIR)/raytracer1: raytracer1.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(LIBS) $^ -o $@ -create-app
+
+$(OUT_DIR)/raytracer3: raytracer3.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(LIBS) $^ -o $@ -create-app
 
